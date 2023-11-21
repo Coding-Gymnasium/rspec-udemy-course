@@ -12,14 +12,16 @@ end
 
 ## TESTS
 RSpec.describe Card do
-  # Let provides separation between different examples, memoization within an example and lazy loading.
   let(:card) { Card.new("Ace", "Spades") }
-
-  # With lazy loading. Use a bang after the let. It behaves like a before each block.
-  # let!(:card) { Card.new("Ace", "Spades") }
 
   it "has a suit" do
     expect(card.suit).to eql("Spades")
+  end
+
+  it "has a custom error message" do
+    card.suit = "nonesense"
+    comparison = "Spades"
+    expect(card.suit).to eql(comparison), "Expected #{comparison} but got #{card.suit} instead"
   end
 
   it "has a rank" do
