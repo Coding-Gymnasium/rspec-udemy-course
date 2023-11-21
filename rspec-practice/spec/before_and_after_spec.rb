@@ -1,6 +1,14 @@
 # frozen_string_literal: true
 
 RSpec.describe "before and after hooks" do
+  before :context do
+    puts "Before Context"
+  end
+
+  after :context do
+    puts "After Context"
+  end
+
   before :example do
     puts "Before example"
   end
