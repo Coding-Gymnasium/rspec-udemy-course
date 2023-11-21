@@ -2,16 +2,23 @@
 
 # Card class
 class Card
-  attr_reader :type
+  attr_reader :rank, :suite
 
-  def initialize(type)
-    @type = type
+  def initialize(rank, suite)
+    @rank = rank
+    @suite = suite
   end
 end
 
-RSpec.describe "Card" do
-  it "has a type" do
-    card = Card.new("Ace of Spades")
-    expect(card.type).to eql("Ace of Spades")
+## TESTS
+RSpec.describe Card do
+  let!(:card) { Card.new("Ace", "Spades") }
+
+  it "has a suite" do
+    expect(card.suite).to eql("Spades")
+  end
+
+  it "has a rank" do
+    expect(card.rank).to eql("Ace")
   end
 end
