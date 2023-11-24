@@ -23,4 +23,21 @@ RSpec.describe "equality matchers" do
       expect(a).to be_a(Float)
     end
   end
+
+  describe "equal and be matcher" do
+    let(:c) { [1, 2, 3] }
+    let(:d) { [1, 2, 3] }
+    let(:e) { c }
+
+    it "cares about object indentity" do
+      expect(c).to eq(d)
+      expect(c).to eql(d)
+
+      expect(c).to equal(e)
+      expect(c).to be(e) # be and equal are equivalent methods.
+
+      expect(c).not_to equal(d)
+      expect(c).not_to equal([1, 2, 3])
+    end
+  end
 end
